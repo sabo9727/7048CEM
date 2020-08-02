@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Streaming Browser",
+    "slug": "streamingbrowser",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "android": {
+      "package": "com.sabo97.streamingbrowser",
+      "versionCode": 1
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sabo97.streamingbrowser"
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
+  },
+  "name": "Streaming Browser"
+}

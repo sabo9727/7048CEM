@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View, FlatList, ImageBackground } from "react-native";
 import Movie from "../components/Movie";
-import apikey from "../Key";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default class Results extends Component {

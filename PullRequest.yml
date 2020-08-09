@@ -1,0 +1,7 @@
+trigger: none
+
+stages:
+#- template: PipelineJobs/DeployBackend.yml
+- template: Pipeline/Build.yml
+  parameters:
+    ReleaseChannel: $(system.pullRequest.pullRequestId)

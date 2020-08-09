@@ -1,14 +1,41 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Image, ScrollView, ImageBackground } from "react-native";
 
+const JustWatch = require('justwatch-api');
 export default class Details extends Component {
   state = {
     imdbID: this.props.route.params.imdbID,
     movieDetails: {},
-    loading: true,
+    platformName: {},
+    movieLocation: {},
+    loading: true,    
   };
 
-  fetchDetails() {
+
+  async Platform(name) {
+  let jw = new JustWatch({locale: 'en_GB'});
+  let search = await jw.search({query: name});
+  let provider = await jw.getProviders();
+  let result = await search.items[0];
+  /*
+  let i;
+  let links = [];
+  for(i = 0; i < result.offers.length; i++) {    
+    links.push(result.offers[i].urls);
+    //console.log(links);
+    }
+  */
+    //console.log(provider[0])
+    this.setState ({
+      platformName: provider[0],      
+    })
+    this.setState ({
+      movieLocation: result.offers[27].urls,
+    })
+  }
+
+
+   fetchDetails() {
     const results = fetch(
       `https://www.omdbapi.com/?apikey=f96941dc&i=${this.state.imdbID}`
     )
@@ -22,12 +49,14 @@ export default class Details extends Component {
           : console.log("No results")
       );
   }
+  
 
-  componentDidMount() {
-    this.fetchDetails();
+  componentDidMount() {    
+    this.fetchDetails();    
   }
   componentDidUpdate() {
     this.props.navigation.setOptions({ title: this.state.movieDetails.Title });
+    this.Platform(`${this.state.movieDetails.Title}`);
   }
 
   render() {
@@ -51,32 +80,22 @@ export default class Details extends Component {
                 Title: {this.state.movieDetails.Title}
               </Text>
               <Text style={styles.detailsText}>
+                Category: {this.state.movieDetails.Type}
+              </Text>
+              <Text style={styles.detailsText}>
                 Released: {this.state.movieDetails.Released}
-              </Text>
-              <Text style={styles.detailsText}>
-                Actors: {this.state.movieDetails.Actors}
-              </Text>
-              <Text style={styles.detailsText}>
-                Genre: {this.state.movieDetails.Genre}
-              </Text>
-              <Text style={styles.detailsText}>
-                Country: {this.state.movieDetails.Country}
-              </Text>
-              <Text style={styles.detailsText}>
-                Director: {this.state.movieDetails.Director}
-              </Text>
+              </Text>     
               <Text style={styles.detailsText}>
                 Language: {this.state.movieDetails.Language}
               </Text>
               <Text style={styles.detailsText}>
-                IMDB Rating: {this.state.movieDetails.imdbRating}
-              </Text>
-              <Text style={styles.detailsText}>
                 Runtime: {this.state.movieDetails.Runtime}
-              </Text>
+              </Text> 
               <Text style={styles.detailsText}>
-                Plot:{" "}
-                {this.state.movieDetails.Plot}
+                Available to stream :{"\n"}
+                  <a href={ this.state.movieLocation.standard_web }>
+                    { this.state.platformName.clear_name }
+                  </a>
               </Text>
             </View>
           </ScrollView>
@@ -102,12 +121,13 @@ const styles = StyleSheet.create({
   },
   detailsContainer: {
     marginHorizontal: 10,
-    backgroundColor: "black",
+    backgroundColor: "#0c151d",
+    alignSelf: "center",
   },
   detailsText: {
     color: "white",
-    fontSize: 16,
+    fontSize: 21,
     paddingHorizontal: 10,
-    marginBottom: 3,
+    marginBottom: 20,
   },
 });

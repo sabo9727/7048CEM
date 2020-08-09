@@ -5,6 +5,13 @@
 
 trigger:
 - master
+- develop
+
+variables:
+  ${{ if eq( variables['Build.SourceBranchName'], 'master' ) }}: 
+    releaseChannel: default
+  ${{ if eq(variables['Build.SourceBranchName'], 'develop') }}: 
+    releaseChannel: staging
 
 pool:
   vmImage: 'ubuntu-latest'

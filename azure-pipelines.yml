@@ -12,9 +12,6 @@ variables:
     releaseChannel: default
   ${{ if eq(variables['Build.SourceBranchName'], 'develop') }}: 
     releaseChannel: staging
-
-parameters:
-  - name: ReleaseChannel
 stages:
   - stage: Build
     jobs:
@@ -30,6 +27,4 @@ stages:
       - script: |
           npm install
           npm install -g expo-cli    
-          expo login -u sabo9727 -p Umyokhine123
-          expo publish --release-channel ${{ parameters.ReleaseChannel}}
         displayName: 'Build Frontend'

@@ -12,17 +12,19 @@ variables:
     releaseChannel: default
   ${{ if eq(variables['Build.SourceBranchName'], 'develop') }}: 
     releaseChannel: staging
+stages:
+  - stage: Build
+    jobs:
+    - job:
+    pool:
+      vmImage: 'ubuntu-latest'
+      steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '10.x'
+        displayName: 'Install Node.js'
 
-pool:
-  vmImage: 'ubuntu-latest'
-
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
-
-- script: |
-    npm install
-    npm install -g expo-cli    
-  displayName: 'Build Frontend'
+      - script: |
+          npm install
+          npm install -g expo-cli    
+        displayName: 'Build Frontend'

@@ -30,7 +30,7 @@ export default class Details extends Component {
       platformName: provider[0],      
     })
     this.setState ({
-      movieLocation: result.offers[27].urls,
+      movieLocation: result.offers[0].urls,
     })
   }
 

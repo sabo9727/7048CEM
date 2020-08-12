@@ -11,4 +11,12 @@ stages:
             npm test
           displayName: 'Backend Test'
         
+          - task: PublishTestResults@2
+          inputs:
+            testResultsFormat: 'JUnit'
+            testResultsFiles: 'BackendTestResults.xml'
+            searchFolder: '$(System.DefaultWorkingDirectory)/Tests'
+            testRunTitle: 'Backend Test'
+            displayName: 'Publishing Test Results'
+        
     

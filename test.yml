@@ -14,8 +14,8 @@ stages:
         - task: PublishTestResults@2
           inputs:
             testResultsFormat: 'JUnit'
-            testResultsFiles: 'BackendTestResults.xml'
-            searchFolder: '$(System.DefaultWorkingDirectory)/Tests'
+            testResultsFiles: '**/TEST-*.xml'
+            searchFolder: '$(System.DefaultWorkingDirectory)'
             testRunTitle: 'Backend Test'
           displayName: 'Publishing Test Results'
         

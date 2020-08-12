@@ -6,6 +6,5 @@ trigger: none
 
 stages:
  - template: Build.yml
- - template: test.yml
 
 

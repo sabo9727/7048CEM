@@ -7,20 +7,17 @@ trigger:
 - master
 - develop
 
-stages:
-  - stage: Build
-    jobs:
-     - job:
-    pool:
-      vmImage: 'ubuntu-latest'
-      steps:
-      - task: NodeTool@0
-        inputs:
-          versionSpec: '10.x'
-        displayName: 'Install Node.js'
 
-      - script: |
-          npm install
-          npm install -g expo-cli
-        displayName: 'Build Frontend'
+pool:
+  vmImage: 'ubuntu-latest'
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
+
+  - script: |
+      npm install
+      npm install -g expo-cli
+    displayName: 'Build Frontend'
 

@@ -1,0 +1,12 @@
+stages:
+- stage: Build
+  jobs:
+  - job:
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: |
+        cd streaming-browser
+        npm install
+        sudo npm install -g expo-cli
+      displayName: 'Frontend build'

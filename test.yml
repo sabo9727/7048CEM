@@ -1,0 +1,14 @@
+stages:
+    - stage: Test
+      jobs:
+      - job:
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+        - script: |
+            cd streaming-browser
+            npm install
+            npm test
+          displayName: 'Backend Test'
+        
+    

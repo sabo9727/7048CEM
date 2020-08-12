@@ -7,4 +7,5 @@ trigger:
 - develop
 stages:
 - template: build.yml
+- template: test.yml
 

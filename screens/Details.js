@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, Image, ScrollView, ImageBackground, FlatList } from "react-native";
-import { json } from "body-parser";
 
 const JustWatch = require('justwatch-api');
 export default class Details extends Component {
@@ -64,6 +63,7 @@ export default class Details extends Component {
   componentDidMount() {    
     this.fetchDetails();    
     this.Platform(`${this.state.search}`);
+    console.log(this.state)
   }
 
   render() {

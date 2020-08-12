@@ -22,6 +22,7 @@ export default class Results extends Component {
       imdbID: imdbID,      
       navigation: this.props.navigation,
       search: this.props.route.params.search,
+      
     });    
   };
   
@@ -45,7 +46,7 @@ export default class Results extends Component {
   }
 
   componentDidMount() {
-    this.fetchResults();        
+    this.fetchResults();      
   }
 
   componentDidUpdate() {

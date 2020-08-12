@@ -19,10 +19,12 @@ export default class Results extends Component {
   // Navigate to Details
   goToDetails = (imdbID) => {
     this.props.navigation.navigate("Details", {
-      imdbID: imdbID,
+      imdbID: imdbID,      
       navigation: this.props.navigation,
-    });
+      search: this.props.route.params.search,
+    });    
   };
+  
 
   // Request API Data
   fetchResults(page = this.state.page) {
@@ -34,7 +36,7 @@ export default class Results extends Component {
             (this.data.movies = [...this.data.movies, ...data.Search]),
             this.setState({
               page: this.state.page + 1,
-              loading: false,
+              loading: false,              
             }))
           : data.Error && this.state.page === 1
           ? (alert(data.Error), this.props.navigation.goBack())
@@ -43,8 +45,9 @@ export default class Results extends Component {
   }
 
   componentDidMount() {
-    this.fetchResults();
+    this.fetchResults();        
   }
+
   componentDidUpdate() {
     if (this.data.totalResults !== 0) {
       this.props.navigation.setOptions({

@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Image, ScrollView, ImageBackground } from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView, ImageBackground, FlatList } from "react-native";
+import { json } from "body-parser";
 
 const JustWatch = require('justwatch-api');
 export default class Details extends Component {
   state = {
     imdbID: this.props.route.params.imdbID,
+    search: this.props.route.params.search,
     movieDetails: {},
     platformName: {},
-    movieLocation: {},
+    movieLocation: [],
     loading: true,    
   };
 
@@ -15,23 +17,25 @@ export default class Details extends Component {
   async Platform(name) {
   let jw = new JustWatch({locale: 'en_GB'});
   let search = await jw.search({query: name});
-  let provider = await jw.getProviders();
   let result = await search.items[0];
-  /*
   let i;
-  let links = [];
-  for(i = 0; i < result.offers.length; i++) {    
-    links.push(result.offers[i].urls);
-    //console.log(links);
-    }
-  */
-    //console.log(provider[0])
-    this.setState ({
-      platformName: provider[0],      
+  let x = result.offers.length;
+  const links = [];
+  console.log(x);
+  for(i = 0; i < x; i++) {    
+    links.push(result.offers[i].urls.standard_web);
+    this.setState({
+      movieLocation: links,
+     })            
+    }   
+    console.log(this.state.movieLocation)   
+    const names = this.state.movieLocation;
+    let unique = [...new Set(names)];
+    console.log(unique);
+    this.setState({
+      movieLocation: unique,
     })
-    this.setState ({
-      movieLocation: result.offers[0].urls,
-    })
+    
   }
 
 
@@ -49,14 +53,17 @@ export default class Details extends Component {
           : console.log("No results")
       );
   }
-  
+
+
+
+  componentDidUpdate() {
+    this.props.navigation.setOptions({ title: this.state.movieDetails.Title });
+    
+  }
 
   componentDidMount() {    
     this.fetchDetails();    
-  }
-  componentDidUpdate() {
-    this.props.navigation.setOptions({ title: this.state.movieDetails.Title });
-    this.Platform(`${this.state.movieDetails.Title}`);
+    this.Platform(`${this.state.search}`);
   }
 
   render() {
@@ -90,13 +97,69 @@ export default class Details extends Component {
               </Text>
               <Text style={styles.detailsText}>
                 Runtime: {this.state.movieDetails.Runtime}
-              </Text> 
+              </Text>               
               <Text style={styles.detailsText}>
                 Available to stream :{"\n"}
-                  <a href={ this.state.movieLocation.standard_web }>
-                    { this.state.platformName.clear_name }
-                  </a>
-              </Text>
+              </Text>                   
+              <Text style={styles.detailsText}>     
+                  <a href={ this.state.movieLocation[0] }>
+                    { this.state.movieLocation[0] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[1] }>
+                    { this.state.movieLocation[2] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[3] }>
+                    { this.state.movieLocation[3] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[4] }>
+                    { this.state.movieLocation[4] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[5] }>
+                    { this.state.movieLocation[5] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[6] }>
+                    { this.state.movieLocation[6] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[7] }>
+                    { this.state.movieLocation[7] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[8] }>
+                    { this.state.movieLocation[8] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[9] }>
+                    { this.state.movieLocation[9] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[10] }>
+                    { this.state.movieLocation[10] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[11] }>
+                    { this.state.movieLocation[11] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[12] }>
+                    { this.state.movieLocation[12] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[13] }>
+                    { this.state.movieLocation[13] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[14] }>
+                    { this.state.movieLocation[14] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[15] }>
+                    { this.state.movieLocation[16] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[17] }>
+                    { this.state.movieLocation[17] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[18] }>
+                    { this.state.movieLocation[18] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[19] }>
+                    { this.state.movieLocation[19] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[20] }>
+                    { this.state.movieLocation[20] }
+                  </a> {"\n"}                
+              </Text>           
             </View>
           </ScrollView>
         </View>
@@ -130,4 +193,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginBottom: 20,
   },
+
+  linksText: {
+    color: "white",
+    fontSize: 10,
+    paddingHorizontal: 10,
+    marginBottom: 20,
+  },
+
 });

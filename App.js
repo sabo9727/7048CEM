@@ -2,12 +2,20 @@ import "react-native-gesture-handler";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+//import routes from './server/routes';
+//import express from 'express';
+//import bodyParser from'body-parser';
 
 import HomeScreen from "./screens/Homescreen";
 import Results from "./screens/Results";
 import Details from "./screens/Details";
 
 const Stack = createStackNavigator();
+//const app = express();
+
+//app.use(bodyParser.urlencoded({ extended: true}));
+//app.use(bodyParser.json());
+//app.use('/', routes);
 
 function App() {
   return (

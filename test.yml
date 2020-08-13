@@ -11,11 +11,18 @@ stages:
             npm test
           displayName: 'Backend Test'
 
+        - task: PublishTestResults@2
+          inputs:
+            testResultsFormat: 'JUnit'
+            testResultsFiles: '**/test-report.xml'
+            mergeTestResults: true
+            testRunTitle: 'Backend Test'
+          displayName: 'Publishing Test Results'
+
         - task: PublicTestResults
           inputs:
             testResultsFormat: 'JUnit'
             testResultsFiles: 'ClientTestResults.xml'
             searchFolder: '$(System.DefaultWorkingDirectory)/Tests'
         testRunTitle: 'Backend Test'
-        
     

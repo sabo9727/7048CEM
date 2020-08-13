@@ -106,6 +106,9 @@ export default class Details extends Component {
                     { this.state.movieLocation[0] }
                   </a> {"\n"}
                   <a href={ this.state.movieLocation[1] }>
+                    { this.state.movieLocation[1] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[2] }>
                     { this.state.movieLocation[2] }
                   </a> {"\n"}
                   <a href={ this.state.movieLocation[3] }>
@@ -145,6 +148,9 @@ export default class Details extends Component {
                     { this.state.movieLocation[14] }
                   </a> {"\n"}
                   <a href={ this.state.movieLocation[15] }>
+                    { this.state.movieLocation[15] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[16] }>
                     { this.state.movieLocation[16] }
                   </a> {"\n"}
                   <a href={ this.state.movieLocation[17] }>
@@ -158,7 +164,52 @@ export default class Details extends Component {
                   </a> {"\n"}
                   <a href={ this.state.movieLocation[20] }>
                     { this.state.movieLocation[20] }
-                  </a> {"\n"}                
+                  </a> {"\n"}  
+                  <a href={ this.state.movieLocation[21] }>
+                    { this.state.movieLocation[21] }
+                  </a> {"\n"}
+                  <a href={ this.state.movieLocation[22] }>
+                    { this.state.movieLocation[22] }
+                  </a> {"\n"}  
+                  <a href={ this.state.movieLocation[23] }>
+                    { this.state.movieLocation[23] }
+                  </a> {"\n"}  
+                  <a href={ this.state.movieLocation[24] }>
+                    { this.state.movieLocation[24] }
+                  </a> {"\n"}  
+                  <a href={ this.state.movieLocation[25] }>
+                    { this.state.movieLocation[25] }
+                  </a> {"\n"}  
+                  <a href={ this.state.movieLocation[26] }>
+                    { this.state.movieLocation[26] }
+                  </a> {"\n"}  
+                  <a href={ this.state.movieLocation[27] }>
+                    { this.state.movieLocation[27] }
+                  </a> {"\n"}  
+                  <a href={ this.state.movieLocation[28] }>
+                    { this.state.movieLocation[28] }
+                  </a> {"\n"}  
+                  <a href={ this.state.movieLocation[29] }>
+                    { this.state.movieLocation[29] }
+                  </a> {"\n"}  
+                  <a href={ this.state.movieLocation[30] }>
+                    { this.state.movieLocation[30] }
+                  </a> {"\n"}  
+                  <a href={ this.state.movieLocation[31] }>
+                    { this.state.movieLocation[31] }
+                  </a> {"\n"}  
+                  <a href={ this.state.movieLocation[32] }>
+                    { this.state.movieLocation[32] }
+                  </a> {"\n"}  
+                  <a href={ this.state.movieLocation[33] }>
+                    { this.state.movieLocation[33] }
+                  </a> {"\n"}  
+                  <a href={ this.state.movieLocation[34] }>
+                    { this.state.movieLocation[34] }
+                  </a> {"\n"}  
+                  <a href={ this.state.movieLocation[35] }>
+                    { this.state.movieLocation[35] }
+                  </a> {"\n"}                  
               </Text>           
             </View>
           </ScrollView>

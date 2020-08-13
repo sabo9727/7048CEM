@@ -12,11 +12,9 @@ stages:
           displayName: 'Backend Test'
 
         - task: PublishTestResults@2
-          condition: succeededorFailed()
           inputs:
-            testRunner: JUnit
-            #testResultsFormat: 'JUnit'
-            testResultsFiles: '**/TEST-RESULTS.xml'
+            testResultsFormat: 'JUnit'
+            testResultsFiles: '**/test-report.xml'
             mergeTestResults: true
             testRunTitle: 'Backend Test'
           displayName: 'Publishing Test Results'

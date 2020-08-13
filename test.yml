@@ -10,13 +10,12 @@ stages:
             npm install
             npm test
           displayName: 'Backend Test'
-        
+
         - task: PublishTestResults@2
           inputs:
             testResultsFormat: 'JUnit'
-            testResultsFiles: 'BackendTestResults.xml'
-            #searchFolder: '$(System.DefaultWorkingDirectory)'
+            testResultsFiles: '**/TEST-*.xml'
+            mergeTestResults: true
             testRunTitle: 'Backend Test'
           displayName: 'Publishing Test Results'
-        
     

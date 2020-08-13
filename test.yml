@@ -18,4 +18,11 @@ stages:
             mergeTestResults: true
             testRunTitle: 'Backend Test'
           displayName: 'Publishing Test Results'
+
+        - task: PublicTestResults
+          inputs:
+            testResultsFormat: 'JUnit'
+            testResultsFiles: 'ClientTestResults.xml'
+            searchFolder: '$(System.DefaultWorkingDirectory)/Tests'
+        testRunTitle: 'Backend Test'
     
